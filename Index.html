@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Downloader - Premium Audio Sourcing</title>
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-red: #ff0000;
+            --primary-blue: #0056b3;
+            --dark-black: #121212;
+            --pure-white: #ffffff;
+            --glass-bg: rgba(255, 255, 255, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background-color: var(--dark-black);
+            color: var(--pure-white);
+            overflow-x: hidden;
+        }
+
+        /* Background Animation */
+        .bg-animate {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            background: linear-gradient(45deg, #121212, #1a1a1a);
+        }
+
+        /* Header & Brand */
+        header {
+            padding: 20px;
+            text-align: center;
+            background: rgba(0, 0, 0, 0.8);
+            border-bottom: 2px solid var(--primary-red);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .brand-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .brand-icon {
+            font-size: 2rem;
+            color: var(--primary-red);
+            animation: pulse 2s infinite;
+        }
+
+        .brand-name {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .brand-name span {
+            color: var(--primary-blue);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease;
+        }
+
+        /* Search Box Design */
+        .search-container {
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+            animation: fadeInUp 1s ease;
+        }
+
+        .search-container input {
+            width: 100%;
+            padding: 18px 25px;
+            border-radius: 50px;
+            border: 2px solid var(--primary-blue);
+            background: var(--pure-white);
+            color: #000;
+            font-size: 1.1rem;
+            outline: none;
+            transition: 0.3s;
+        }
+
+        .search-container input:focus {
+            box-shadow: 0 0 20px rgba(0, 86, 179, 0.5);
+            border-color: var(--primary-red);
+        }
+
+        .download-btn {
+            position: absolute;
+            right: 8px;
+            top: 8px;
+            padding: 10px 25px;
+            background: var(--primary-red);
+            color: white;
+            border: none;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+
+        .download-btn:hover {
+            background: var(--primary-blue);
+            transform: scale(1.05);
+        }
+
+        /* Features Section */
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 50px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .feature-card {
+            background: var(--glass-bg);
+            padding: 30px;
+            border-radius: 15px;
+            text-align: center;
+            border: 1px solid rgba(255,255,255,0.1);
+            transition: 0.4s;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary-blue);
+            background: rgba(255, 255, 255, 0.15);
+        }
+
+        .feature-card i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: var(--primary-blue);
+        }
+
+        .feature-card.red-theme i { color: var(--primary-red); }
+
+        /* Animations */
+        @keyframes pulse {
+            0% { transform: scale(1); filter: drop-shadow(0 0 0px var(--primary-red)); }
+            50% { transform: scale(1.1); filter: drop-shadow(0 0 15px var(--primary-red)); }
+            100% { transform: scale(1); filter: drop-shadow(0 0 0px var(--primary-red)); }
+        }
+
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Mobile Friendly Adjustments */
+        @media (max-width: 600px) {
+            .brand-name { font-size: 1.4rem; }
+            .hero h1 { font-size: 1.8rem; }
+            .search-container input { padding: 15px 20px; font-size: 0.9rem; }
+            .download-btn { padding: 8px 15px; font-size: 0.8rem; top: 7px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="bg-animate"></div>
+
+    <header>
+        <div class="brand-container">
+            <i class="fas fa-compact-disc brand-icon"></i>
+            <div class="brand-name">Music <span>Downloader</span></div>
+        </div>
+    </header>
+
+    <section class="hero">
+        <h1>Download Your Favorite Beats</h1>
+        <div class="search-container">
+            <input type="text" placeholder="Paste music link here (YouTube, Spotify, Soundcloud)...">
+            <button class="download-btn">
+                <i class="fas fa-cloud-download-alt"></i> DOWNLOAD
+            </button>
+        </div>
+    </section>
+
+    <section class="features">
+        <div class="feature-card">
+            <i class="fas fa-bolt"></i>
+            <h3>High Speed</h3>
+            <p>Experience ultra-fast downloading speeds with our premium servers.</p>
+        </div>
+        <div class="feature-card red-theme">
+            <i class="fas fa-music"></i>
+            <h3>HD Quality</h3>
+            <p>Download music in 320kbps high-quality crystal clear audio.</p>
+        </div>
+        <div class="feature-card">
+            <i class="fas fa-shield-alt"></i>
+            <h3>Secure & Safe</h3>
+            <p>100% safe from viruses and malware for your mobile and PC.</p>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 30px; color: #888; font-size: 0.9rem;">
+        &copy; 2026 Music Downloader Pro. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
