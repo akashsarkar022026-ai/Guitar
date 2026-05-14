@@ -1,0 +1,51 @@
+// এটি একটি ডেমো কোড যা আপনার বলা কালার থিম মেনে তৈরি
+import 'package:flutter/material.dart';
+
+void main() => runApp(MusicDownloaderApp());
+
+class MusicDownloaderApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Colors.red,
+        scaffoldBackgroundColor: Colors.black, // ব্ল্যাক ব্যাকগ্রাউন্ড
+      ),
+      home: Scaffold(
+        appBar: AppBar(
+          title: Text("Music Downloader", style: TextStyle(color: Colors.white)),
+          backgroundColor: Colors.black,
+          centerTitle: true,
+        ),
+        body: Column(
+          children: [
+            Padding(
+              padding: EdgeInsets.all(16.0),
+              child: TextField(
+                style: TextStyle(color: Colors.white),
+                decoration: InputDecoration(
+                  hintText: "Search your music...",
+                  hintStyle: TextStyle(color: Colors.white54),
+                  prefixIcon: Icon(Icons.search, color: Colors.blue), // ব্লু আইকন
+                  filled: true,
+                  fillColor: Colors.grey[900],
+                  border: OutlineInputBorder(borderRadius: BorderRadius.circular(30)),
+                ),
+              ),
+            ),
+            // ডাউনলোড বাটন উইথ রেড কালার
+            ElevatedButton.icon(
+              onPressed: () {},
+              icon: Icon(Icons.file_download, color: Colors.white),
+              label: Text("Download Now"),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: Colors.red, // রেড কালার বাটন
+                shape: StadiumBorder(),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
